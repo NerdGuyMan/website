@@ -32,6 +32,46 @@
       font-style: italic;
       color: #444;
       text-shadow: 1px 1px 2px #ccc;
+	  }
+	  footer {
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid #ccc;
+      font-family: sans-serif;
+	  position: fixed;
+	  width: 100%;
+	  bottom: 0;
+    }
+
+    .hover-info {
+      position: relative;
+      display: inline-block;
+      margin: 0 10px;
+      color: #333;
+      cursor: default;
+    }
+
+    .hover-info::after {
+      content: attr(data-hover);
+      position: absolute;
+      bottom: 125%; /* Above the text */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .hover-info:hover::after {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -39,5 +79,16 @@
     <img src="crest.png" alt="Gibbs Crest">
     <div class="caption">Tenax propositi</div>
   </div>
+  
+  <footer>
+    &copy; Gibbs <span id="year"></span> &mdash; 
+	<span class="hover-info" data-hover="chris@gibbs.lol">Contact Us</span> |
+    <span class="hover-info" data-hover="0.2">Version</span>
+  </footer>
+  
+  <script>
+    // Set the current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
